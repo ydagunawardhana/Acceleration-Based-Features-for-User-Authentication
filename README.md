@@ -16,10 +16,10 @@ The system processes raw 3-axis accelerometer data from 10 users, extracts a set
 
 ## Dataset
 
-[cite_start]The dataset consists of acceleration data from **10 users**. [cite: 18]
-* [cite_start]**Data:** 3-axis (x, y, z) acceleration data. [cite: 18]
-* [cite_start]**Sessions:** Each user performed two 6-minute walking sessions on separate days (Session 1 (FD) for Training, Session 2 (MD) for Testing). [cite: 19]
-* [cite_start]**Sampling:** Data was recorded at ~30-32 samples per second. [cite: 18]
+The dataset consists of acceleration data from **10 users**.
+* **Data:** 3-axis (x, y, z) acceleration data.
+* **Sessions:** Each user performed two 6-minute walking sessions on separate days (Session 1 (FD) for Training, Session 2 (MD) for Testing).
+* **Sampling:** Data was recorded at ~30-32 samples per second.
 
 ## 📋 How to Run
 
