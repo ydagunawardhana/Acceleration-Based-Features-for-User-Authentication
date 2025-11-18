@@ -1,6 +1,6 @@
 function [features, labels] = extractFeatures(data, userID, windowSize, overlap)
 
-% Calculate number of windows
+% Number of windows
 stepSize = windowSize - overlap;
 numWindows = floor((size(data, 1) - windowSize) / stepSize) + 1;
 
@@ -10,15 +10,12 @@ features = zeros(numWindows, numFeatures);
 labels = ones(numWindows, 1) * userID;
 window_idx = 1;
 
-% Sliding Window
 for i = 1:stepSize:(size(data, 1) - windowSize + 1)
     
-    % Get data for one window (x, y, z columns)
+    % Get data (x, y, z columns)
     window_x = data(i : i + windowSize - 1, 1);
     window_y = data(i : i + windowSize - 1, 2);
     window_z = data(i : i + windowSize - 1, 3);
-    
-    % Calculate TIME-DOMAIN features
     
     % X-axis time features
     f_x_time(1) = mean(window_x);
@@ -44,8 +41,7 @@ for i = 1:stepSize:(size(data, 1) - windowSize + 1)
     f_z_time(5) = max(window_z);
     f_z_time(6) = var(window_z);
     
-    % Calculate FREQUENCY-DOMAIN features
-    
+    % Calculate feature
     fft_x = abs(fft(window_x));
     f_x_freq(1) = sum(fft_x.^2) / length(window_x); 
     
@@ -55,7 +51,7 @@ for i = 1:stepSize:(size(data, 1) - windowSize + 1)
     fft_z = abs(fft(window_z));
     f_z_freq(1) = sum(fft_z.^2) / length(window_z);
     
-    % Combine all features into one row vector
+    % Add all features
     features(window_idx, :) = [f_x_time, f_x_freq, f_y_time, f_y_freq, f_z_time, f_z_freq];
     
     window_idx = window_idx + 1;
